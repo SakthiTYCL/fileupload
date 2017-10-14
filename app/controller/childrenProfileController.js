@@ -4,7 +4,6 @@ module.exports = function (databaseBS, Sequelize) {
     var childrenProfileController = {};
 
     childrenProfileController.childphoto = function (req, res, next) {
-        console.log("controller");
         childrenProfileServiceObject.childphoto(
             req,
             childrenProfileModel,
