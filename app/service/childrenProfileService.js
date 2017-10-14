@@ -4,11 +4,10 @@ module.exports = function (testmodel, databaseBS, Sequelize) {
     var childrenProfileModel = require('../module/childrenprofile').ChildrenProfileDetial(databaseBS, Sequelize, "childrenprofiles");
     var childrenProfileService = {};
     childrenProfileService.childphoto = function (req, testmodel, Sequelize, res) {
-        console.log("service");
         var imgfilename = null;
         var storage = multer.diskStorage({ //multers disk storage settings
             destination: function (req, file, cb, res) {
-                cb(null, './uploads/children/photos')
+                cb(null, './uploads/profile_photo')
             },
             filename: function (req, file, cb, res) {
                 var datetimestamp = Date.now();
@@ -21,7 +20,6 @@ module.exports = function (testmodel, databaseBS, Sequelize) {
         }).single('file');
         upload(req, res, function (err) {
             if (err) {
-                console.log(err);
                 res.json({ error_code: 1, err_desc: err });
                 return;
             }
